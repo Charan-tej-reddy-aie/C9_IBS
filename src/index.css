@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Scientific Color Palette - Deep Scientific Theme */
+    --background: 220 25% 8%; /* #0f1115 - Deep space */
+    --foreground: 210 20% 95%; /* #f0f4f8 - Light text */
+    --card: 220 20% 12%;
+    --card-foreground: 210 20% 95%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 210 20% 95%;
+    --primary: 190 80% 55%; /* Cyan accent */
+    --primary-foreground: 220 25% 8%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 210 20% 95%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 210 15% 65%;
+    --accent: 190 80% 55%;
+    --accent-foreground: 220 25% 8%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 210 20% 95%;
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 190 80% 55%;
+    --radius: 0.75rem;
+    
+    /* Custom Scientific Colors */
+    --sci-deep: #0f1115;
+    --sci-panel: #1a1d24;
+    --sci-border: #2a2f3a;
+    --sci-cyan: #00d4ff;
+    --sci-green: #00e676;
+    --sci-red: #ff5252;
+    --sci-amber: #ffb74d;
+    --sci-text: #e8ecf1;
+    --sci-muted: #8b92a8;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #0f1115 0%, #151921 50%, #0f1115 100%);
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+  }
+  
+  code, pre, .mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  ::selection {
+    background-color: rgba(0, 212, 255, 0.3);
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  /* Typography Utilities */
+  .font-display {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  /* Scientific glow effects */
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.1);
+  }
+  
+  .glow-green {
+    box-shadow: 0 0 30px rgba(0, 230, 118, 0.4), 0 0 60px rgba(0, 230, 118, 0.2);
+  }
+  
+  .glow-red {
+    box-shadow: 0 0 30px rgba(255, 82, 82, 0.4), 0 0 60px rgba(255, 82, 82, 0.2);
+  }
+  
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  }
+  
+  /* Glass morphism */
+  .glass-panel {
+    background: rgba(26, 29, 36, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(42, 47, 58, 0.8);
+  }
+  
+  /* Animated gradient background */
+  .gradient-bg {
+    background: linear-gradient(135deg, #0f1115 0%, #1a1d24 50%, #0f1115 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* DNA helix animation */
+  .dna-helix {
+    animation: dnaRotate 3s linear infinite;
+  }
+  
+  @keyframes dnaRotate {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+  }
+  
+  /* Pulsing animation */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+  
+  /* Floating animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Scan line effect */
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--sci-cyan), transparent);
+    animation: scanLine 2s linear infinite;
+  }
+  
+  @keyframes scanLine {
+    0% { top: 0; }
+    100% { top: 100%; }
+  }
+  
+  /* Molecule bonding animation */
+  .molecule-bond {
+    stroke-dasharray: 10;
+    animation: bondPulse 1s linear infinite;
+  }
+  
+  @keyframes bondPulse {
+    0% { stroke-dashoffset: 20; }
+    100% { stroke-dashoffset: 0; }
+  }
+  
+  /* Result background transitions */
+  .result-bg-green {
+    background: radial-gradient(ellipse at center, rgba(0, 230, 118, 0.15) 0%, transparent 70%);
+  }
+  
+  .result-bg-red {
+    background: radial-gradient(ellipse at center, rgba(255, 82, 82, 0.15) 0%, transparent 70%);
+  }
+  
+  /* Input styling */
+  .sci-input {
+    @apply bg-[#1a1d24] border border-[#2a2f3a] rounded-lg px-4 py-3 text-sm font-mono;
+    @apply focus:outline-none focus:border-[#00d4ff] focus:ring-1 focus:ring-[#00d4ff];
+    @apply transition-all duration-300;
+  }
+  
+  /* Button styling */
+  .sci-btn {
+    @apply px-6 py-3 rounded-lg font-medium text-sm;
+    @apply bg-gradient-to-r from-[#00d4ff] to-[#00a8cc];
+    @apply text-[#0f1115] hover:brightness-110;
+    @apply transition-all duration-300;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  /* Card hover effect */
+  .sci-card {
+    @apply bg-[#1a1d24] border border-[#2a2f3a] rounded-xl;
+    @apply transition-all duration-300;
+  }
+  
+  .sci-card:hover {
+    @apply border-[#00d4ff]/50;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+  }
+  
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #0f1115;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #2a2f3a;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a4050;
+  }
+}
